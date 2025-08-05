@@ -2,6 +2,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
+import { BACKEND_URL } from "../utiles";
 
 function CreateBlog() {
   const [title, setTitle] = useState("");
@@ -33,9 +34,9 @@ function CreateBlog() {
     formData.append("blogphoto", blogImage);
 
     try {
-      setLoading(true); // 🔹 Start loading
+      setLoading(true); 
       const { data } = await axios.post(
-        "https://sky-blog.onrender.com/api/blog/create",
+        `${BACKEND_URL}/api/blog/create`,
         formData,
         {
           withCredentials: true,

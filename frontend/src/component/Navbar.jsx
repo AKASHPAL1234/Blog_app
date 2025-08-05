@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useAuth } from '../context/AuthProvider';
 import axios from "axios";
 import toast from "react-hot-toast";
+import { BACKEND_URL } from "../utiles";
 
 
 export default function Navbar() {
@@ -20,7 +21,7 @@ export default function Navbar() {
     e.preventDefault();
     try {
       const { data } = await axios.get(
-        "https://sky-blog.onrender.com/api/users/logout",
+        `${BACKEND_URL}/api/users/logout`,
         { withCredentials: true }
       );
       toast.success(data.message);

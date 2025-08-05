@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { BACKEND_URL } from "../../utiles";
 
 function Register() {
   const [name, setName] = useState("");
@@ -43,7 +44,7 @@ function Register() {
     try {
       setOtpLoading(true);
       const { data } = await axios.post(
-        "https://sky-blog.onrender.com/api/users/send-otp",
+        `${BACKEND_URL}/api/users/send-otp`,
         { email }
       );
       toast.success(data.message || "OTP sent successfully");
@@ -63,7 +64,7 @@ function Register() {
     try {
       setOtpLoading(true);
       const { data } = await axios.post(
-        "https://sky-blog.onrender.com/api/users/verify-otp",
+        `${BACKEND_URL}/api/users/verify-otp`,
         { email, otp }
       );
       toast.success(data.message || "OTP verified successfully");
@@ -100,7 +101,7 @@ function Register() {
     try {
       setLoading(true);
       const { data } = await axios.post(
-        "https://sky-blog.onrender.com/api/users/ragister",
+        `${BACKEND_URL}/api/users/ragister`,
         formData,
         {
           headers: {

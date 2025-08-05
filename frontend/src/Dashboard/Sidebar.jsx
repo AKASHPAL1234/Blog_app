@@ -5,6 +5,7 @@ import axios from "axios";
 import { CiMenuBurger } from "react-icons/ci";
 import { BiSolidLeftArrowAlt } from "react-icons/bi";
 import toast from "react-hot-toast";
+import { BACKEND_URL } from "../utiles";
 
 function Sidebar({ setComponent }) {
   const { profile, setIsAuthenication } = useAuth();
@@ -24,7 +25,7 @@ function Sidebar({ setComponent }) {
     e.preventDefault();
     try {
       const { data } = await axios.get(
-        "https://sky-blog.onrender.com/api/users/logout",
+        `${BACKEND_URL}/api/users/logout`,
         { withCredentials: true }
       );
       toast.success(data.message);

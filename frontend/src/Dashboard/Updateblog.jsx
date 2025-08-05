@@ -6,6 +6,7 @@ import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../context/AuthProvider";
+import { BACKEND_URL } from "../utiles";
 
 function UpdateBlog() {
   const navigateTo = useNavigate();
@@ -36,7 +37,7 @@ function UpdateBlog() {
     const fetchBlog = async () => {
       try {
         const { data } = await axios.get(
-          `https://sky-blog.onrender.com/api/blog/singleblog/${id}`,
+          `${BACKEND_URL}/api/blog/singleblog/${id}`,
           { withCredentials: true }
         );
 
@@ -71,7 +72,7 @@ function UpdateBlog() {
     try {
       setIsAuthenication(true);
       const { data } = await axios.put(
-        `https://sky-blog.onrender.com/api/blog/update/${id}`,
+        `${BACKEND_URL}/api/blog/update/${id}`,
         formData,
         {
           withCredentials: true,

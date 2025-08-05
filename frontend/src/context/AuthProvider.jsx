@@ -5,6 +5,7 @@ import { createContext } from "react";
 import axios from "axios";
 import { useContext } from "react";
 import Cookies from 'js-cookie';
+import { BACKEND_URL } from "../utiles";
 
 export const AuthContext = createContext();
 
@@ -19,7 +20,7 @@ export function AuthProvider({ children }) {
        
         
           const { data } = await axios.get(
-          "https://sky-blog.onrender.com/api/users/myprofile",
+          `${BACKEND_URL}/api/users/myprofile`,
           {
             withCredentials: true,
           }
@@ -40,7 +41,7 @@ export function AuthProvider({ children }) {
     const fetchblog = async () => {
       try {
         const response = await axios.get(
-          "https://sky-blog.onrender.com/api/blog/allblog",
+          `${BACKEND_URL}/api/blog/allblog`,
           { withCredentials: true }
         );
         console.log(response);

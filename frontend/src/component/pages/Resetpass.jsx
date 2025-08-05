@@ -5,6 +5,7 @@ import { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { BACKEND_URL } from "../../utiles";
 
 function ResetPassword() {
   const [email, setEmail] = useState("");
@@ -43,7 +44,7 @@ function ResetPassword() {
     e.preventDefault();
     setLoading(true);
     try {
-      const { data } = await axios.post("https://sky-blog.onrender.com/api/users/reset-password", {
+      const { data } = await axios.post(`${BACKEND_URL}/api/users/reset-password`, {
         email,
         newPassword,
       });

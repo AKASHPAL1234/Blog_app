@@ -3,6 +3,7 @@ import axios from "axios";
 import {  useEffect, useState } from "react";
 import { useAuth } from "../context/AuthProvider";
 import { Link } from "react-router-dom";
+import { BACKEND_URL } from "../utiles";
 
 
 
@@ -12,7 +13,7 @@ function Creaters() {
   useEffect(()=>{
     const fetchAdmin=async()=>{
       try {
-         const {data} = await axios.get('https://sky-blog.onrender.com/api/users/admin',{ withCredentials: true})
+         const {data} = await axios.get(`${BACKEND_URL}/api/users/admin`,{ withCredentials: true})
         console.log(data.admins)
         setAdmin(data.admins);
         
