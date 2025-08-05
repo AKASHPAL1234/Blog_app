@@ -26,7 +26,7 @@ export default function MyBlog() {
 
   const handleDelete = async (id) => {
     try {
-      const res = await axios.delete(`http://localhost:8080/api/blog/delete/${id}`, {
+      const res = await axios.delete(`${BACKEND_URL}/api/blog/delete/${id}`, {
         withCredentials: true,
       });
       toast.success(res.data.message || "Blog deleted successfully");
