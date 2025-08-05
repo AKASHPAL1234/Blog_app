@@ -43,7 +43,7 @@ function Register() {
     try {
       setOtpLoading(true);
       const { data } = await axios.post(
-        "http://localhost:8080/api/users/send-otp",
+        "https://sky-blog.onrender.com/api/users/send-otp",
         { email }
       );
       toast.success(data.message || "OTP sent successfully");
