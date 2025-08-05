@@ -12,7 +12,7 @@ function Creaters() {
   useEffect(()=>{
     const fetchAdmin=async()=>{
       try {
-         const {data} = await axios.get('http://localhost:8080/api/users/admin',{ withCredentials: true})
+         const {data} = await axios.get('https://sky-blog.onrender.com/api/users/admin',{ withCredentials: true})
         console.log(data.admins)
         setAdmin(data.admins);
         

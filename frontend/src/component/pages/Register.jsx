@@ -63,7 +63,7 @@ function Register() {
     try {
       setOtpLoading(true);
       const { data } = await axios.post(
-        "http://localhost:8080/api/users/verify-otp",
+        "https://sky-blog.onrender.com/api/users/verify-otp",
         { email, otp }
       );
       toast.success(data.message || "OTP verified successfully");
@@ -100,7 +100,7 @@ function Register() {
     try {
       setLoading(true);
       const { data } = await axios.post(
-        "http://localhost:8080/api/users/ragister",
+        "https://sky-blog.onrender.com/api/users/ragister",
         formData,
         {
           headers: {

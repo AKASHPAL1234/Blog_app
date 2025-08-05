@@ -36,7 +36,7 @@ function UpdateBlog() {
     const fetchBlog = async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:8080/api/blog/singleblog/${id}`,
+          `https://sky-blog.onrender.com/api/blog/singleblog/${id}`,
           { withCredentials: true }
         );
 
@@ -71,7 +71,7 @@ function UpdateBlog() {
     try {
       setIsAuthenication(true);
       const { data } = await axios.put(
-        `http://localhost:8080/api/blog/update/${id}`,
+        `https://sky-blog.onrender.com/api/blog/update/${id}`,
         formData,
         {
           withCredentials: true,

@@ -10,7 +10,7 @@ export default function MyBlog() {
     const fetchMyBlogs = async () => {
       try {
         const { data } = await axios.get(
-          "http://localhost:8080/api/blog/myblog",
+          "https://sky-blog.onrender.com/api/blog/myblog",
           { withCredentials: true }
         );
         console.log(data);
@@ -25,7 +25,7 @@ export default function MyBlog() {
 
    const handleDelete = async (id) => {
     await axios
-      .delete(`http://localhost:8080/api/blog/delete/${id}`, {
+      .delete(`https://sky-blog.onrender.com/api/blog/delete/${id}`, {
         withCredentials: true,
       })
       .then((res) => {

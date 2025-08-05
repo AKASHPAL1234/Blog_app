@@ -19,7 +19,7 @@ export function AuthProvider({ children }) {
        
         
           const { data } = await axios.get(
-          "http://localhost:8080/api/users/myprofile",
+          "https://sky-blog.onrender.com/api/users/myprofile",
           {
             withCredentials: true,
           }
@@ -40,7 +40,7 @@ export function AuthProvider({ children }) {
     const fetchblog = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8080/api/blog/allblog",
+          "https://sky-blog.onrender.com/api/blog/allblog",
           { withCredentials: true }
         );
         console.log(response);

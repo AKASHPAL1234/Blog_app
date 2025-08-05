@@ -29,7 +29,7 @@ function Login() {
     setLoading(true);
     try {
       const { data } = await axios.post(
-        "http://localhost:8080/api/users/login",
+        "https://sky-blog.onrender.com/api/users/login",
         { email, password, role },
         { withCredentials: true }
       );

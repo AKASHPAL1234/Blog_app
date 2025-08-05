@@ -81,7 +81,7 @@ function Detail() {
     const fetchBlog = async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:8080/api/blog/singleblog/${id}`,
+          `https://sky-blog.onrender.com/api/blog/singleblog/${id}`,
           {
             withCredentials: true,
             headers: {

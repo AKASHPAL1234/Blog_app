@@ -8,7 +8,7 @@ function Creators() {
     const fetchCreators = async () => {
       try {
         const { data } = await axios.get(
-          "http://localhost:8080/api/users/admin",
+          "https://sky-blog.onrender.com/api/users/admin",
           {
             withCredentials: true,
           }

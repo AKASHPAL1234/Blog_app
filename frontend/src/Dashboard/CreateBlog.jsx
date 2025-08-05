@@ -35,7 +35,7 @@ function CreateBlog() {
     try {
       setLoading(true); // 🔹 Start loading
       const { data } = await axios.post(
-        "http://localhost:8080/api/blog/create",
+        "https://sky-blog.onrender.com/api/blog/create",
         formData,
         {
           withCredentials: true,

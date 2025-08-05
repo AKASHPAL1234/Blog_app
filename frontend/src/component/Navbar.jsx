@@ -20,7 +20,7 @@ export default function Navbar() {
     e.preventDefault();
     try {
       const { data } = await axios.get(
-        "http://localhost:8080/api/users/logout",
+        "https://sky-blog.onrender.com/api/users/logout",
         { withCredentials: true }
       );
       toast.success(data.message);

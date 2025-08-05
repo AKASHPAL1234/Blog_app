@@ -43,7 +43,7 @@ function ResetPassword() {
     e.preventDefault();
     setLoading(true);
     try {
-      const { data } = await axios.post("http://localhost:8080/api/users/reset-password", {
+      const { data } = await axios.post("https://sky-blog.onrender.com/api/users/reset-password", {
         email,
         newPassword,
       });
