@@ -1,4 +1,3 @@
-
 import axios from "axios";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
@@ -8,11 +7,9 @@ function CreateBlog() {
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
   const [about, setAbout] = useState("");
-
   const [blogImage, setBlogImage] = useState("");
   const [blogImagePreview, setBlogImagePreview] = useState("");
-
-  const [loading, setLoading] = useState(false); // 🔹 Loading state
+  const [loading, setLoading] = useState(false);
 
   const changePhotoHandler = (e) => {
     const file = e.target.files[0];
@@ -26,7 +23,6 @@ function CreateBlog() {
 
   const handleCreateBlog = async (e) => {
     e.preventDefault();
-
     const formData = new FormData();
     formData.append("title", title);
     formData.append("category", category);
@@ -34,15 +30,13 @@ function CreateBlog() {
     formData.append("blogphoto", blogImage);
 
     try {
-      setLoading(true); 
+      setLoading(true);
       const { data } = await axios.post(
         `${BACKEND_URL}/api/blog/create`,
         formData,
         {
           withCredentials: true,
-          headers: {
-            "Content-Type": "multipart/form-data", // 🔹 Fixed typo here
-          },
+          headers: { "Content-Type": "multipart/form-data" },
         }
       );
       toast.success(data.message || "Blog created successfully");
@@ -54,86 +48,85 @@ function CreateBlog() {
     } catch (error) {
       toast.error(error.response?.data?.message || "Please fill the required fields");
     } finally {
-      setLoading(false); // 🔹 Stop loading
+      setLoading(false);
     }
   };
 
   return (
-    <div className="ml-44">
-      <div className="min-h-screen py-10">
-        <div className="max-w-4xl mx-auto p-6 border rounded-lg shadow-lg">
-          <h3 className="text-2xl font-semibold mb-8">Create Blog</h3>
-          <form onSubmit={handleCreateBlog} className="space-y-6">
-            {/* Category */}
-            <div className="space-y-2">
-              <label className="block text-lg">Category</label>
-              <select
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-400 rounded-md outline-none"
-              >
-                <option value="">Select Category</option>
-                <option value="Devotion">Devotion</option>
-                <option value="Sports">Sports</option>
-                <option value="Coding">Coding</option>
-                <option value="Entertainment">Entertainment</option>
-                <option value="Business">Business</option>
-              </select>
-            </div>
+    <div className="min-h-screen bg-gray-50 px-4 py-10 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-md">
+        <h3 className="text-2xl font-bold mb-8 text-center text-gray-800">📝 Create Blog</h3>
+        <form onSubmit={handleCreateBlog} className="space-y-6">
 
-            {/* Title */}
-            <div className="space-y-2">
-              <label className="block text-lg">Title</label>
-              <input
-                type="text"
-                placeholder="Enter your blog title"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-400 rounded-md outline-none"
-              />
-            </div>
-
-            {/* Blog Image */}
-            <div className="space-y-2">
-              <label className="block text-lg">Blog Image</label>
-              <div className="flex items-center justify-center">
-                <img
-                  src={blogImagePreview ? `${blogImagePreview}` : "/imgPL.webp"}
-                  alt="Preview"
-                  className="w-full max-w-sm h-auto rounded-md object-cover"
-                />
-              </div>
-              <input
-                type="file"
-                onChange={changePhotoHandler}
-                className="w-full px-3 py-2 border border-gray-400 rounded-md outline-none"
-              />
-            </div>
-
-            {/* About */}
-            <div className="space-y-2">
-              <label className="block text-lg">About</label>
-              <textarea
-                rows="5"
-                placeholder="Write something about your blog"
-                value={about}
-                onChange={(e) => setAbout(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-400 rounded-md outline-none"
-              />
-            </div>
-
-            {/* Submit Button */}
-            <button
-              type="submit"
-              disabled={loading}
-              className={`w-full py-3 px-4 text-white rounded-md transition-colors duration-200 ${
-                loading ? "bg-gray-500 cursor-not-allowed" : "bg-blue-600 hover:bg-blue-700"
-              }`}
+          {/* Category */}
+          <div>
+            <label className="block mb-2 font-semibold text-gray-700">Category</label>
+            <select
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
-              {loading ? "Creating Blog..." : "Post Blog"}
-            </button>
-          </form>
-        </div>
+              <option value="">Select Category</option>
+              <option value="Devotion">Devotion</option>
+              <option value="Sports">Sports</option>
+              <option value="Coding">Coding</option>
+              <option value="Entertainment">Entertainment</option>
+              <option value="Business">Business</option>
+            </select>
+          </div>
+
+          {/* Title */}
+          <div>
+            <label className="block mb-2 font-semibold text-gray-700">Title</label>
+            <input
+              type="text"
+              placeholder="Enter your blog title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          {/* Blog Image */}
+          <div>
+            <label className="block mb-2 font-semibold text-gray-700">Blog Image</label>
+            <div className="flex justify-center">
+              <img
+                src={blogImagePreview || "/imgPL.webp"}
+                alt="Preview"
+                className="w-full max-w-sm h-auto object-cover rounded-md"
+              />
+            </div>
+            <input
+              type="file"
+              onChange={changePhotoHandler}
+              className="mt-2 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none"
+            />
+          </div>
+
+          {/* About */}
+          <div>
+            <label className="block mb-2 font-semibold text-gray-700">About</label>
+            <textarea
+              rows="5"
+              placeholder="Write something about your blog..."
+              value={about}
+              onChange={(e) => setAbout(e.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+            />
+          </div>
+
+          {/* Submit Button */}
+          <button
+            type="submit"
+            disabled={loading}
+            className={`w-full py-3 px-4 text-white font-semibold rounded-md transition duration-200 ${
+              loading ? "bg-gray-500 cursor-not-allowed" : "bg-blue-600 hover:bg-blue-700"
+            }`}
+          >
+            {loading ? "Creating Blog..." : "Post Blog"}
+          </button>
+        </form>
       </div>
     </div>
   );
