@@ -2,8 +2,6 @@ import mongoose from "mongoose";
 import { Blog } from "../models/blog.model.js";
 import { v2 as cloudinary } from "cloudinary";
 
-
-
 export const createblog = async (req, res) => {
   try {
     if (!req.files || Object.keys(req.files).length === 0) {
@@ -96,13 +94,11 @@ export const getSingleblog=async(req,res)=>{
 }
 
 
-
 export const myBlog=async(req,res)=>{
   const createdBy=req.user._id;
   const myBlog=await Blog.find({createdBy})
   res.status(200).json(myBlog)
 }
-
 
 export const updateBlog=async(req,res)=>{
   const {id}=req.params;

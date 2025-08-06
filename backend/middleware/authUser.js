@@ -1,10 +1,6 @@
 
-
-
 import { User } from "../models/user.model.js";
 import jwt from "jsonwebtoken";
-
-
 
 // Authentication Middleware
 export const isAuthenticated = async (req, res, next) => {
